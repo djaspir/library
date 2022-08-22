@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <dialog>
+      <h2>Add Book</h2>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" />
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" />
+      <label for="pages">Pages</label>
+      <input type="text" name="pages" id="pages" />
+      <label for="read">Read</label>
+      <input type="checkbox" name="read" id="read" />
+      <div>
+        <button>Confirm</button>
+        <button>Cancel</button>
+      </div>
+    </dialog>
+    <header class="header">
+      <h1 class="header__title">Project: Library</h1>
+    </header>
+    <main class="main">
+      <button class="main__btn">Add Book</button>
+
+      <table class="main__table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Number of Pages</th>
+            <th>Already Read?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>lorem</td>
+          </tr>
+          <tr>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>lorem</td>
+            <td>lorem</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>

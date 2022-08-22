@@ -1,0 +1,54 @@
+.header__title {
+  font-size: 3rem;
+}
+
+.main__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  & th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: $success;
+    color: #fff;
+  }
+
+  & tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  & tr:hover {
+    background-color: #ddd;
+  }
+}
+
+.main__btn {
+  background-color: $primary;
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  display: block;
+}
+
+input {
+  margin-bottom: 12px;
+}
