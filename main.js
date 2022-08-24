@@ -13,14 +13,39 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
+function removeBook(data) {
+  delete myLibrary[data];
+}
+
+function displayReset() {
+  bookList.innerHTML = "";
+}
+
+function readValue(data) {
+  if (data.checked) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function readButtonValue(data) {
+  if (data === true) {
+    return "Already Read";
+  } else {
+    return "Not Yet Read";
+  }
+}
+
 function addBookToLibrary() {
   const title = document.getElementById("title");
   const author = document.getElementById("author");
   const pages = document.getElementById("pages");
   const isRead = document.getElementById("isRead");
+  console.log(isRead.checked);
 
   myLibrary.push(
-    new Book(title.value, author.value, pages.value, isRead.value)
+    new Book(title.value, author.value, pages.value, readValue(isRead))
   );
 }
 
@@ -31,11 +56,28 @@ function displayBook() {
 
     Object.values(key).forEach((val) => {
       const cell = document.createElement("td");
+      // TOGGLE READ BUTTON
+      if (typeof val === "boolean") {
+        const readBtn = document.createElement("button");
+        readBtn.setAttribute("id", "readBtn");
+        readBtn.textContent = readButtonValue(val);
+        cell.appendChild(readBtn);
+        row.appendChild(cell);
+        readBtn.addEventListener("click", (e) => {
+          myLibrary[row.dataset.id].isRead = !myLibrary[row.dataset.id].isRead;
+          readBtn.textContent = readButtonValue(
+            myLibrary[row.dataset.id].isRead
+          );
+        });
+        return;
+      }
+
       const content = document.createTextNode(val);
       cell.appendChild(content);
       row.appendChild(cell);
     });
-    const cellBtn = document.createElement("td");
+    // REMOVE BUTTON
+    const cellDelBtn = document.createElement("td");
     const delBtn = document.createElement("button");
     delBtn.setAttribute("id", "delBtn");
     delBtn.textContent = `Remove`;
@@ -45,18 +87,10 @@ function displayBook() {
       displayBook();
     });
 
-    cellBtn.appendChild(delBtn);
-    row.appendChild(cellBtn);
+    cellDelBtn.appendChild(delBtn);
+    row.appendChild(cellDelBtn);
     bookList.appendChild(row);
   });
-}
-
-function removeBook(data) {
-  delete myLibrary[data];
-}
-
-function displayReset() {
-  bookList.innerHTML = "";
 }
 
 addBtn.addEventListener("click", () => {
